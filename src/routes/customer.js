@@ -1,52 +1,52 @@
-// src/routes/user.js
+// src/routes/customer.js
 
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const customer = require('../models/user');
 
-// Create a new user
+// Create a new customer
 router.post('/', async (req, res) => {
   try {
-    const user = await User.create(req.body);
-    res.json(user);
+    const customer = await User.create(req.body);
+    res.json(customer);
   } catch (error) {
     res.status(500).json({ message: 'Failed to create user.' });
   }
 });
 
-// Get all users
+// Get all customer
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll();
-    res.json(users);
+    const customer = await User.findAll();
+    res.json(customer);
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch users.' });
   }
 });
-// Get user by ID
+// Get customer by ID
 router.get('/:id', async (req, res) => {
     try {
-      const user = await User.findByPk(req.params.id);
-      if (!user) {
+      const customer = await customer.findByPk(req.params.id);
+      if (!customer) {
         res.status(404).json({ message: 'User not found.' });
       } else {
-        res.json(user);
+        res.json(customer);
       }
     } catch (error) {
       res.status(500).json({ message: 'Failed to fetch user.' });
     }
   });
   
-  // Update user by ID
+  // Update customer by ID
   router.put('/:id', async (req, res) => {
     try {
-      const [updatedRowsCount] = await User.update(req.body, {
+      const [updatedRowsCount] = await customer.update(req.body, {
           where: { id: req.params.id }
       });      
       if (updatedRowsCount === 0) {
         res.status(404).json({ message: 'User not found.' });
       } else {
-        const user = await User.findByPk(req.params.id);
+        const customer = await User.findByPk(req.params.id);
         res.json(user);
       }
     } catch (error) {
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
   // Delete user by ID
 router.delete('/:id', async (req, res) => {
     try {
-      const deletedRowsCount = await User.destroy({ where: { id: req.params.id } });
+      const deletedRowsCount = await customer.destroy({ where: { id: req.params.id } });
       if (deletedRowsCount === 0) {
         res.status(404).json({ message: 'User not found.' });
       } else {
