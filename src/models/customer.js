@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
 
-const User = sequelize.define('user', {
-  firstName: {
+const User = sequelize.define('customer', {
+  Name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  lastName: {
+  address: {
     type: Sequelize.STRING,
     allowNull: false,
   },
@@ -18,7 +18,7 @@ const User = sequelize.define('user', {
       isEmail: true,
     },
   },
-  age: {
+  no_of_purchases: {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
@@ -27,4 +27,4 @@ const User = sequelize.define('user', {
   },
 });
 
-module.exports = User;
+module.exports = customer;
