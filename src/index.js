@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const express = require('express');
 
-const userRoutes = require('./routes/users');
+const customerRoutes = require('./routes/users');
 
 // import swagger ui module and swagger json file
 
